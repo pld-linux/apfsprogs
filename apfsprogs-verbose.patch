@@ -1,0 +1,108 @@
+--- apfsprogs-0.2.0/lib/Makefile.orig	2024-11-06 23:51:38.000000000 +0100
++++ apfsprogs-0.2.0/lib/Makefile	2024-11-11 08:49:12.755416869 +0100
+@@ -9,11 +9,11 @@ override CFLAGS += -Wall -fno-strict-ali
+ 
+ libapfs.a: $(OBJS)
+ 	@echo '  Assembling library archive...'
+-	@$(AR) rcs $@ $^
++	$(AR) rcs $@ $^
+ 
+ %.o: %.c
+ 	@echo '  Compiling $<...'
+-	@$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
++	$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
+ ifdef SPARSE_VERSION
+ 	@sparse $(CFLAGS) $<
+ endif
+--- apfsprogs-0.2.0/apfs-label/Makefile.orig	2024-11-06 23:51:38.000000000 +0100
++++ apfsprogs-0.2.0/apfs-label/Makefile	2024-11-11 08:51:44.137930093 +0100
+@@ -17,19 +17,19 @@ override CFLAGS += -Wall -Wno-address-of
+ 
+ apfs-label: $(OBJS) $(LIBRARY)
+ 	@echo '  Linking...'
+-	@$(CC) $(CFLAGS) $(LDFLAGS) -o apfs-label $(OBJS) $(LIBRARY)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o apfs-label $(OBJS) $(LIBRARY)
+ 	@echo '  Build complete'
+ 
+ # Build the common libraries
+ $(LIBRARY): FORCE
+ 	@echo '  Building libraries...'
+-	@$(MAKE) -C $(LIBDIR) --silent --no-print-directory
++	$(MAKE) -C $(LIBDIR) --no-print-directory
+ 	@echo '  Library build complete'
+ FORCE:
+ 
+ %.o: %.c
+ 	@echo '  Compiling $<...'
+-	@$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
++	$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
+ ifdef SPARSE_VERSION
+ 	@sparse $(CFLAGS) $<
+ endif
+--- apfsprogs-0.2.0/apfs-snap/Makefile.orig	2024-11-06 23:51:38.000000000 +0100
++++ apfsprogs-0.2.0/apfs-snap/Makefile	2024-11-11 08:52:53.330888576 +0100
+@@ -14,12 +14,12 @@ override CFLAGS += -Wall -Wno-address-of
+ 
+ apfs-snap: $(OBJS)
+ 	@echo '  Linking...'
+-	@$(CC) $(CFLAGS) $(LDFLAGS) -o apfs-snap $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o apfs-snap $(OBJS)
+ 	@echo '  Build complete'
+ 
+ %.o: %.c
+ 	@echo '  Compiling $<...'
+-	@$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
++	$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
+ ifdef SPARSE_VERSION
+ 	@sparse $(CFLAGS) $<
+ endif
+--- apfsprogs-0.2.0/apfsck/Makefile.orig	2024-11-06 23:51:38.000000000 +0100
++++ apfsprogs-0.2.0/apfsck/Makefile	2024-11-11 08:53:41.043963425 +0100
+@@ -18,19 +18,19 @@ override CFLAGS += -Wall -Wno-address-of
+ 
+ apfsck: $(OBJS) $(LIBRARY)
+ 	@echo '  Linking...'
+-	@$(CC) $(CFLAGS) $(LDFLAGS) -o apfsck $(OBJS) $(LIBRARY)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o apfsck $(OBJS) $(LIBRARY)
+ 	@echo '  Build complete'
+ 
+ # Build the common libraries
+ $(LIBRARY): FORCE
+ 	@echo '  Building libraries...'
+-	@$(MAKE) -C $(LIBDIR) --silent --no-print-directory
++	$(MAKE) -C $(LIBDIR) --no-print-directory
+ 	@echo '  Library build complete'
+ FORCE:
+ 
+ %.o: %.c
+ 	@echo '  Compiling $<...'
+-	@$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
++	$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
+ ifdef SPARSE_VERSION
+ 	@sparse $(CFLAGS) $<
+ endif
+--- apfsprogs-0.2.0/mkapfs/Makefile.orig	2024-11-06 23:51:38.000000000 +0100
++++ apfsprogs-0.2.0/mkapfs/Makefile	2024-11-11 08:54:05.477164393 +0100
+@@ -17,19 +17,19 @@ override CFLAGS += -Wall -Wno-address-of
+ 
+ mkapfs: $(OBJS) $(LIBRARY)
+ 	@echo '  Linking...'
+-	@$(CC) $(CFLAGS) $(LDFLAGS) -o mkapfs $(OBJS) $(LIBRARY)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o mkapfs $(OBJS) $(LIBRARY)
+ 	@echo '  Build complete'
+ 
+ # Build the common libraries
+ $(LIBRARY): FORCE
+ 	@echo '  Building libraries...'
+-	@$(MAKE) -C $(LIBDIR) --silent --no-print-directory
++	$(MAKE) -C $(LIBDIR) --no-print-directory
+ 	@echo '  Library build complete'
+ FORCE:
+ 
+ %.o: %.c
+ 	@echo '  Compiling $<...'
+-	@$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
++	$(CC) $(CFLAGS) -o $@ -MMD -MP -c $<
+ ifdef SPARSE_VERSION
+ 	@sparse $(CFLAGS) $<
+ endif
