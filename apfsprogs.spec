@@ -28,7 +28,7 @@ należy próbować ostrożnie i zgłaszać napotkane problemy.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} -C apfs-label \
